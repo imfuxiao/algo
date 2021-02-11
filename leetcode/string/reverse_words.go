@@ -130,3 +130,35 @@ func ReverseWords2(s string) string {
 func ReverseWords3(s string) string {
 	panic("not implements")
 }
+
+func reverseWords(s string) string {
+	length := len(s)
+	stock := make([]byte, 0, length)
+	push := func(char byte) {
+		stock = append(stock, char)
+	}
+	pop := func() byte {
+		length := len(stock)
+		char := stock[length-1]
+		stock = stock[:length-1]
+		return char
+	}
+
+	var ans strings.Builder
+
+	for i := range s {
+		if s[i] == ' ' {
+			for len(stock) > 0 {
+				ans.WriteByte(pop())
+			}
+			ans.WriteByte(' ')
+		} else {
+			push(s[i])
+		}
+	}
+
+	for len(stock) > 0 {
+		ans.WriteByte(pop())
+	}
+	return ans.String()
+}
