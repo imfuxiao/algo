@@ -163,3 +163,42 @@ func TestBinarySearchTree_Delete(t *testing.T) {
 		})
 	}
 }
+
+func TestBinaryTree_InNode(t *testing.T) {
+	type fields struct {
+		rootNode *Node
+	}
+	tests := []struct {
+		name   string
+		fields fields
+	}{
+		{
+			fields: fields{rootNode: &Node{
+				value:     intNode(1),
+				leftNode:  &Node{
+					value:     intNode(3),
+					leftNode:  &Node{value: intNode(5)},
+					rightNode: &Node{
+						value:     intNode(4),
+						rightNode: &Node{
+							value:     intNode(6),
+						},
+					},
+				},
+				rightNode: &Node{
+					value:     intNode(2),
+				},
+			}},
+		},
+	}
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			b := &BinaryTree{
+				rootNode: tt.fields.rootNode,
+			}
+			//b.InNode()
+			//b.PostNode()
+			b.PreNode()
+		})
+	}
+}

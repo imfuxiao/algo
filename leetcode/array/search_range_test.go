@@ -17,6 +17,20 @@ func Test_searchRange(t *testing.T) {
 	}{
 		{
 			args: args{
+				nums:   []int{2, 2},
+				target: 3,
+			},
+			want: []int{-1, -1},
+		},
+		{
+			args: args{
+				nums:   []int{5, 7, 7, 8, 8, 10},
+				target: 6,
+			},
+			want: []int{-1, -1},
+		},
+		{
+			args: args{
 				nums:   []int{5, 7, 7, 8, 8, 10},
 				target: 8,
 			},
