@@ -67,3 +67,46 @@ func combinationSum2(candidates []int, target int) [][]int {
 
 	return ans
 }
+
+func combinationSum3(k int, n int) [][]int {
+	nums := []int{1, 2, 3, 4, 5, 6, 7, 8, 9}
+	ans := make([][]int, 0, 10)
+	current := make([]int, 0, k)
+
+	var combination func(int, int)
+
+	combination = func(target int, index int) {
+		if target == 0 && len(current) == k {
+			ans = append(ans, append([]int{}, current...))
+			return
+		}
+		for i := index; i < 9; i++ {
+			if nums[i]-target > 0 {
+				break
+			}
+			if len(current) >= k {
+				return
+			}
+			current = append(current, nums[i])
+			combination(target-nums[i], i+1)
+			current = current[:len(current)-1]
+		}
+	}
+
+	combination(n, 0)
+
+	return ans
+}
+
+func combinationSum4(nums []int, target int) int {
+	dp := make([]int, target+1)
+	dp[0] = 1
+	for i := 1; i <= target; i++ {
+		for _, num := range nums {
+			if i >= num {
+				dp[i] += dp[i-num]
+			}
+		}
+	}
+	return dp[target]
+}
