@@ -1,11 +1,11 @@
 ## 排序算法
 
-### 冒泡
+### 冒泡 bubble sort
 
-### 选择
+### 选择 selection sort
 
-### 插入
+### 插入 insertion sort
 
-### 归并
+### 归并 merge sort
 
-### 快排
+### 快排 quick sort
