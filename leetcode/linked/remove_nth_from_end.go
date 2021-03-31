@@ -44,31 +44,6 @@ func rotateRight(head *ListNode, k int) *ListNode {
 
 }
 
-func deleteDuplicates(head *ListNode) *ListNode {
-	var (
-		newNode = &ListNode{}
-	)
-
-	node, isRepeat := newNode, false
-	for head != nil {
-		for head.Next != nil && head.Next.Val == head.Val {
-			isRepeat = true
-			head.Next = head.Next.Next
-		}
-		next := head.Next
-		if !isRepeat {
-			node.Next = head
-			node = node.Next
-		} else {
-			node.Next = next
-		}
-		head = next
-		isRepeat = false
-	}
-
-	return newNode.Next
-}
-
 func reverseBetween(head *ListNode, m int, n int) *ListNode {
 	var (
 		newHead = &ListNode{
